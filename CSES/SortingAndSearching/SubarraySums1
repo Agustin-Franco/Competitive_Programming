@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+ 
+int main() 
+{
+    int n, x;
+    cin >> n >> x;
+    
+    vector <int> arr;
+ 
+    for (int i = 0; i < n; i++) {
+        int val;
+        cin >> val;
+        arr.push_back(val);
+    }
+ 
+    int sum = 0, ans = 0, left = 0;
+    
+    for(int right = 0; right < n; right++) {
+        sum += arr[right];
+        while(sum > x) {
+            sum -= arr[left];
+            ++left;
+        }
+        if(sum == x) ans++;
+    }
+    cout << ans;
+}
